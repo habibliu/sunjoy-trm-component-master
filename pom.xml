@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.sunjoy.trm</groupId>
+	<artifactId>sunjoy-trm-component-master</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<description>Train resource managment system</description>
+
+	<modules>
+		<module>sunjoy-trm-component-master-service</module>
+		<module>sunjoy-trm-component-master-client</module>
+	</modules>
+
+	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Edgware.SR3</version>
+		<!-- <relativePath /> -->
+		<!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<sunjoy.framework.version>0.0.1-SNAPSHOT</sunjoy.framework.version>
+		<sunjoy.common.version>0.0.1-SNAPSHOT</sunjoy.common.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- sunjoy framework dependencies -->
+			<dependency>
+				<groupId>com.sunjoy.framework</groupId>
+				<artifactId>sunjoy-framework-client</artifactId>
+				<version>${sunjoy.framework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sunjoy.framework</groupId>
+				<artifactId>sunjoy-framework-service</artifactId>
+				<version>${sunjoy.framework.version}</version>
+			</dependency>
+			<!-- sunjoy common dependencies -->
+			<dependency>
+				<groupId>com.sunjoy.common</groupId>
+				<artifactId>sunjoy-common-base</artifactId>
+				<version>${sunjoy.common.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>1.2.9</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jsonzou</groupId>
+				<artifactId>jmockdata</artifactId>
+				<version>3.1.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://192.168.0.237:8081/nexus/content/repositories/releases</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://192.168.0.237:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>
