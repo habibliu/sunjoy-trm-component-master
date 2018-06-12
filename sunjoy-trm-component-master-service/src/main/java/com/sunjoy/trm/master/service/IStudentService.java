@@ -12,31 +12,43 @@ public interface IStudentService {
 	 * 分页查询
 	 */
 	public Page<Student> queryByPage(StudentCriteria criteria);
-	
+
 	/**
 	 * 不分页查询
+	 * 
 	 * @param criteria
 	 * @return
 	 */
 	public List<Student> query(StudentCriteria criteria);
-	
+
 	/**
 	 * 更新学员资料
+	 * 
 	 * @param student
 	 * @return
 	 */
 	public Student update(Student student);
-	
+
 	/**
 	 * 新增学员档案
+	 * 
 	 * @param student
 	 * @return
 	 */
 	public Student add(Student student);
+
 	/**
 	 * 根据主键删除学员档案(逻辑删除)
+	 * 
 	 * @param id
 	 * @return
 	 */
-	public int remove(String  id);
+	public int remove(String id);
+
+	/**
+	 * 根据主键获取学员档案
+	 * @param id
+	 * @return
+	 */
+	public Student get(String id);
 }

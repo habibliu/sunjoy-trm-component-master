@@ -1,12 +1,12 @@
 package com.sunjoy.trm.master.dao.enums;
 
-public enum StudentStatus {
+public enum BaseStatus {
 	VALID("VALID", "有效"), DELETED("DELETED", "删除");
 
 	private String code;
 	private String label;
 
-	private StudentStatus(String code, String label) {
+	private BaseStatus(String code, String label) {
 		this.code = code;
 		this.label = label;
 	}

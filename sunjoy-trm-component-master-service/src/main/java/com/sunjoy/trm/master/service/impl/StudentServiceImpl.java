@@ -13,7 +13,7 @@ import com.sunjoy.framework.dao.paging.Page;
 import com.sunjoy.trm.master.dao.StudentDao;
 import com.sunjoy.trm.master.dao.criteria.StudentCriteria;
 import com.sunjoy.trm.master.dao.entity.Student;
-import com.sunjoy.trm.master.dao.enums.StudentStatus;
+import com.sunjoy.trm.master.dao.enums.BaseStatus;
 import com.sunjoy.trm.master.service.IStudentService;
 import com.sunjoy.trm.master.utils.ExceptionConstant;
 
@@ -45,7 +45,7 @@ public class StudentServiceImpl implements IStudentService {
 	@Override
 	public Student update(Student student) {
 		// step 1, 非空检查，加上UUID
-		BeanUtils.checkEmptyFields(student, "uuid", "code", "name", "parentName");
+		BeanUtils.checkEmptyFields(student, "id", "code", "name", "parentName");
 		// step 2, 编号重复检验,如果编号被其他学员使用了，即抛异常
 		StudentCriteria criteria = new StudentCriteria();
 		criteria.setCode(student.getCode());
@@ -76,7 +76,7 @@ public class StudentServiceImpl implements IStudentService {
 		if (student.getId() == null) {
 			student.setId(RandomUtils.createUUID());
 		}
-		student.setStatus(StudentStatus.VALID.getCode());
+		student.setStatus(BaseStatus.VALID.getCode());
 		this.studentDao.addStudent(student);
 		return student;
 	}
@@ -85,10 +85,18 @@ public class StudentServiceImpl implements IStudentService {
 	public int remove(String uuid) {
 		if(!BeanUtils.isEmpty(uuid)) {
 			Student student=this.studentDao.findOne(uuid);
-			student.setStatus(StudentStatus.DELETED.getCode());
+			student.setStatus(BaseStatus.DELETED.getCode());
 			return this.studentDao.updateStudent(student);
 		}
 		return 0;
+	}
+
+	@Override
+	public Student get(String id) {
+		if(!BeanUtils.isEmpty(id)) {
+			return this.studentDao.findOne(id);
+		}
+		return null;
 	}
 
 }

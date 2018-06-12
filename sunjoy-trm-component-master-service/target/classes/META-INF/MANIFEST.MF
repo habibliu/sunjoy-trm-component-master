@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: sunjoy-trm-component-master-service
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: liuganchao
+Built-By: Administrator
 Implementation-Vendor-Id: com.sunjoy.trm
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_152
 Implementation-URL: https://projects.spring.io/spring-cloud/sunjoy-trm
  -component-master/sunjoy-trm-component-master-service
 Created-By: Maven Integration for Eclipse

@@ -20,7 +20,7 @@ import com.sunjoy.framework.dao.paging.Page;
 import com.sunjoy.trm.config.AbstractUnitTestSupport;
 import com.sunjoy.trm.master.dao.criteria.StudentCriteria;
 import com.sunjoy.trm.master.dao.entity.Student;
-import com.sunjoy.trm.master.dao.enums.StudentStatus;
+import com.sunjoy.trm.master.dao.enums.BaseStatus;
 import com.sunjoy.trm.master.service.IStudentService;
 
 public class StudentServiceImplTest extends AbstractUnitTestSupport{
@@ -101,7 +101,7 @@ public class StudentServiceImplTest extends AbstractUnitTestSupport{
 		student.setId(null);
 		Student newOne=this.studentService.add(student);
 		assertTrue(newOne.getId()!=null);
-		assertTrue(StudentStatus.VALID.getCode().equals(newOne.getStatus()));
+		assertTrue(BaseStatus.VALID.getCode().equals(newOne.getStatus()));
 	}
 	
 	@Test(expected=CommonException.class)
