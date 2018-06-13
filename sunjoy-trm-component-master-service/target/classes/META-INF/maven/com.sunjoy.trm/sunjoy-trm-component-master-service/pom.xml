@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sunjoy.trm</groupId>
+		<artifactId>sunjoy-trm-component-master</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+
+	<artifactId>sunjoy-trm-component-master-service</artifactId>
+	<packaging>jar</packaging>
+
+	<description>The Security Component Module for TRM</description>
+
+	<dependencies>
+
+		<!-- sunjoy framework dependencies -->
+		<dependency>
+			<groupId>com.sunjoy.framework</groupId>
+			<artifactId>sunjoy-framework-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sunjoy.framework</groupId>
+			<artifactId>sunjoy-framework-service</artifactId>
+		</dependency>
+		<!-- sunjoy common dependencies -->
+		<dependency>
+			<groupId>com.sunjoy.common</groupId>
+			<artifactId>sunjoy-common-base</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jsonzou</groupId>
+			<artifactId>jmockdata</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>true</executable>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>env/dev/*</exclude>
+					<exclude>env/test/*</exclude>
+					<exclude>env/uat/*</exclude>
+					<exclude>env/prod/*</exclude>
+				</excludes>
+				<includes>
+					<include>messages/*</include>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources/env/${profiles.active}</directory>
+			</resource>
+		</resources>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<profiles.active>dev</profiles.active>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+
+		<profile>
+			<id>test</id>
+			<properties>
+				<profiles.active>test</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>uat</id>
+			<properties>
+				<profiles.active>uat</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<profiles.active>prod</profiles.active>
+			</properties>
+		</profile>
+	</profiles>
+</project>
