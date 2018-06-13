@@ -1,1 +1,218 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sunjoy.trm.master.dao.mapper.VenueMapper">
+	<sql id="selectFields">
+		select
+		id as id,
+		name as name,
+		expired_date as expireDate,
+		principal as principal,
+		phone as phone,
+		address as address,
+		memo as memo,
+		status as status,
+		create_time as createTime,
+		create_user as createUser,
+		update_time as updateTime,
+		update_user as updateUser
+	</sql>
+	<sql id="queryCondition">
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="phone != null and phone!='' ">
+				and phone =#{phone,jdbcType=VARCHAR}
+			</if>
+			<if test="name != null and name != ''">
+				and name like '%' ||
+				#{name,jdbcType=VARCHAR} || '%'
+			</if>
+			<if test="phase != null ">
+				and phase = #{cardType,jdbcType=INTEGER}
+			</if>
+			
+		</where>
+	</sql>
+	
+	<sql id="insertFields">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">
+				id,
+			</if>
+			<if test="name != null and name != ''">
+				name,
+			</if>
+			<if test="expireDate != null">
+				expire_date,
+			</if>
+			<if test="principal != null and principal !=''">
+				phase,
+			</if>
+			<if test="phonse != null nd principal !=''">
+				phone,
+			</if>
+			<if test="address != null ">
+				address,
+			</if>
+			<if test="numberPerTerm != null ">
+				number_per_term,
+			</if>
+			<if test="pricePerTerm != null ">
+				price_per_term,
+			</if>
+			<if test="memo != null and memo != ''">
+				memo,
+			</if>
+			<if test="status != null and status != ''">
+				status,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="createUser != null and createUser != ''">
+				create_user,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="updateUser != null and updateUser != ''">
+				update_user,
+			</if>
+		</trim>
+	</sql>
+	<sql id="insertValues">
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null and name != ''">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="expireDate != null ">
+				#{expireDate,jdbcType=DATE},
+			</if>
+			<if test="principal != null and principal != ''">
+				#{principal,jdbcType=VARCHAR},
+			</if>
+			<if test="phonse != null">
+				#{phonse,jdbcType=DATE},
+			</if>
+			<if test="school != null and school != ''">
+				#{school,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null and phone != ''">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null and address != ''">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null and status != ''">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createUser != null and createUser != ''">
+				#{createUser,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateUser != null and updateUser != ''">
+				#{updateUser,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</sql>
+	<!-- 分页查询 -->
+	<select id="queryVenueByPage" parameterType="com.sunjoy.trm.master.dao.criteria.VenueCriteria"
+		resultType="com.sunjoy.trm.master.dao.entity.Venue">
+		<include refid="selectFields" />
+		from mas.venue
+		<include refid="queryCondition" />
+		order by create_time desc
+		<if test="pageSize != null and currentPage != null">
+			limit ${pageSize} offset ${pageSize}*(${currentPage}-1)
+		</if>
+	</select>
+	<!-- 取学员表的记录数 -->
+	<select id="getVenueTotalCount" parameterType="com.sunjoy.trm.master.dao.criteria.VenueCriteria"
+		resultType="java.lang.Long">
+		select count(1) from mas.venue
+		<include refid="queryCondition"></include>
+	</select>
+	<!-- 不分页查询 -->
+	<select id="queryVenue" parameterType="com.sunjoy.trm.master.dao.criteria.VenueCriteria"
+		resultType="com.sunjoy.trm.master.dao.entity.Venue">
+		<include refid="selectFields" />
+		from mas.venue
+		<include refid="queryCondition" />
+		order by create_time desc
+	</select>
+	
+	<insert id="addVenue" parameterType="com.sunjoy.trm.master.dao.entity.Venue">
+		insert into mas.venue
+		<include refid="insertFields" />
+		<include refid="insertValues" />
+	</insert>
+	
+	<select id="findOne" parameterType="java.lang.String"
+		resultType="com.sunjoy.trm.master.dao.entity.Venue">
+		<include refid="selectFields" />
+		from mas.venue where id = #{id}
+	</select>
+	
+	<update id="updateVenue" parameterType="com.sunjoy.trm.master.dao.entity.Venue">
+		update mas.venue
+		<set>
+			<if test="status != null">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null and code != ''">
+				code = #{code,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null and name != ''">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null ">
+				sex = #{sex,jdbcType=SMALLINT},
+			</if>
+			<if test="height != null">
+				height = #{height,jdbcType=INTEGER},
+			</if>
+			<if test="phone != null and phone != ''">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="school != null and school != ''">
+				school = #{school,jdbcType=VARCHAR},
+			</if>
+			<if test="birthDate != null">
+				birth_date = #{birthDate,jdbcType=DATE},
+			</if>
+			<if test="address != null and address != ''">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="parentName != null and parentName != ''">
+				parent_name = #{parentName,jdbcType=VARCHAR},
+			</if>
+			<if test="parentSex != null">
+				parent_sex = #{parentSex,jdbcType=SMALLINT},
+			</if>
+			<if test="parentPhone != null and parentPhone != ''">
+				parent_phone = #{parentPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="parentWx != null and parentWx != ''">
+				parent_wx = #{parentWx,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateUser != null">
+				update_user = #{updateUser,jdbcType=VARCHAR},
+			</if>
+			
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	
+</mapper>
