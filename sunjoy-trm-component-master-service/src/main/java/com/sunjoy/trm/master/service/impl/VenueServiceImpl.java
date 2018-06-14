@@ -46,7 +46,7 @@ public class VenueServiceImpl implements IVenueService {
 	@Override
 	public Venue update(Venue venue) {
 		// step 1, 非空检查，加上UUID
-		BeanUtils.checkEmptyFields(venue, "id", "code", "name");
+		BeanUtils.checkEmptyFields(venue, "name","principal","phone");
 		// step 2, 编号重复检验,如果编号被其他学员使用了，即抛异常
 		VenueCriteria criteria = new VenueCriteria();
 		criteria.setName(venue.getName());
@@ -65,7 +65,7 @@ public class VenueServiceImpl implements IVenueService {
 	@Override
 	public Venue add(Venue venue) {
 		// step 1, 非空检查
-		BeanUtils.checkEmptyFields(venue, "code", "name");
+		BeanUtils.checkEmptyFields(venue, "name","principal","phone");
 		// step 2, 编号重复检验
 		VenueCriteria criteria = new VenueCriteria();
 		criteria.setName(venue.getName());

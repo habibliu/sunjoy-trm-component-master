@@ -5,7 +5,7 @@
 		select
 		id as id,
 		name as name,
-		expired_date as expireDate,
+		expire_date as expireDate,
 		principal as principal,
 		phone as phone,
 		address as address,
@@ -28,8 +28,9 @@
 				and name like '%' ||
 				#{name,jdbcType=VARCHAR} || '%'
 			</if>
-			<if test="phase != null ">
-				and phase = #{cardType,jdbcType=INTEGER}
+			<if test="principal != null and principal != ''">
+				and principal like '%' ||
+				#{name,jdbcType=VARCHAR} || '%'
 			</if>
 			
 		</where>
@@ -47,19 +48,13 @@
 				expire_date,
 			</if>
 			<if test="principal != null and principal !=''">
-				phase,
+				principal,
 			</if>
-			<if test="phonse != null nd principal !=''">
+			<if test="phone != null and phone !=''">
 				phone,
 			</if>
-			<if test="address != null ">
+			<if test="address != null and address !=''">
 				address,
-			</if>
-			<if test="numberPerTerm != null ">
-				number_per_term,
-			</if>
-			<if test="pricePerTerm != null ">
-				price_per_term,
 			</if>
 			<if test="memo != null and memo != ''">
 				memo,
@@ -95,17 +90,14 @@
 			<if test="principal != null and principal != ''">
 				#{principal,jdbcType=VARCHAR},
 			</if>
-			<if test="phonse != null">
-				#{phonse,jdbcType=DATE},
-			</if>
-			<if test="school != null and school != ''">
-				#{school,jdbcType=VARCHAR},
-			</if>
 			<if test="phone != null and phone != ''">
-				#{phone,jdbcType=VARCHAR},
+				#{phone,jdbcType=DATE},
 			</if>
 			<if test="address != null and address != ''">
 				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null and memo != ''">
+				#{memo,jdbcType=VARCHAR},
 			</if>
 			<if test="status != null and status != ''">
 				#{status,jdbcType=VARCHAR},
@@ -168,41 +160,25 @@
 			<if test="status != null">
 				status = #{status,jdbcType=VARCHAR},
 			</if>
-			<if test="code != null and code != ''">
-				code = #{code,jdbcType=VARCHAR},
-			</if>
 			<if test="name != null and name != ''">
 				name = #{name,jdbcType=VARCHAR},
 			</if>
-			<if test="sex != null ">
-				sex = #{sex,jdbcType=SMALLINT},
+			<if test="principal != null and principal != '' ">
+				principal = #{principal,jdbcType=VARCHAR},
 			</if>
-			<if test="height != null">
-				height = #{height,jdbcType=INTEGER},
-			</if>
+			
 			<if test="phone != null and phone != ''">
 				phone = #{phone,jdbcType=VARCHAR},
 			</if>
-			<if test="school != null and school != ''">
-				school = #{school,jdbcType=VARCHAR},
-			</if>
-			<if test="birthDate != null">
-				birth_date = #{birthDate,jdbcType=DATE},
+			
+			<if test="expireDate != null">
+				expire_date = #{expireDate,jdbcType=DATE},
 			</if>
 			<if test="address != null and address != ''">
 				address = #{address,jdbcType=VARCHAR},
 			</if>
-			<if test="parentName != null and parentName != ''">
-				parent_name = #{parentName,jdbcType=VARCHAR},
-			</if>
-			<if test="parentSex != null">
-				parent_sex = #{parentSex,jdbcType=SMALLINT},
-			</if>
-			<if test="parentPhone != null and parentPhone != ''">
-				parent_phone = #{parentPhone,jdbcType=VARCHAR},
-			</if>
-			<if test="parentWx != null and parentWx != ''">
-				parent_wx = #{parentWx,jdbcType=VARCHAR},
+			<if test="memo != null and memo != ''">
+				memo = #{memo,jdbcType=VARCHAR},
 			</if>
 			<if test="updateTime != null">
 				update_time = #{updateTime,jdbcType=TIMESTAMP},

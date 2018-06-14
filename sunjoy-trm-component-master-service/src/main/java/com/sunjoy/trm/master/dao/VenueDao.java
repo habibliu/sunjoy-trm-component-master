@@ -2,12 +2,15 @@ package com.sunjoy.trm.master.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.sunjoy.common.utils.BeanUtils;
 import com.sunjoy.framework.dao.BaseDao;
 import com.sunjoy.trm.master.dao.criteria.VenueCriteria;
 import com.sunjoy.trm.master.dao.entity.Venue;
 import com.sunjoy.trm.master.dao.mapper.VenueMapper;
 
+@Repository
 public class VenueDao extends BaseDao<VenueMapper,Venue>{
 	@Override
 	protected void setMapperClass() {
