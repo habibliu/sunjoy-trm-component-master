@@ -11,6 +11,7 @@ public class Venue extends BaseEntity{
 	private String phone;
 	private String address;
 	private String memo;
+	private String status;
 	
 	public String getName() {
 		return name;
@@ -47,5 +48,11 @@ public class Venue extends BaseEntity{
 	}
 	public void setMemo(String memo) {
 		this.memo = memo;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

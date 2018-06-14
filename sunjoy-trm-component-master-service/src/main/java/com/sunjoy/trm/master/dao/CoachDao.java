@@ -61,14 +61,14 @@ public class CoachDao extends BaseDao<CoachMapper,Coach> {
 
 	}
 	
-	public void  addCoach(Coach student) {
-		logger.debug("addCoach:\n{}",student);
-		this.getMapper().addCoach(student);
+	public void  addCoach(Coach coach) {
+		logger.debug("addCoach:\n{}",coach);
+		this.getMapper().addCoach(coach);
 	}
 	
-	public int updateCoach(Coach student) {
-		logger.debug("updateCoach:\n{}",student);
-		return this.getMapper().updateCoach(student);
+	public int updateCoach(Coach coach) {
+		logger.debug("updateCoach:\n{}",coach);
+		return this.getMapper().updateCoach(coach);
 	}
 	
 	public Coach findOne(String id) {
