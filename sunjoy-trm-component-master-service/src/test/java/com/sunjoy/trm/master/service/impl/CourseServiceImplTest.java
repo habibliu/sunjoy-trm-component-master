@@ -62,7 +62,7 @@ public class CourseServiceImplTest extends AbstractUnitTestSupport{
 		Page<Course> page=courseService.queryByPage(criteria);
 		
 		Assert.assertTrue(page != null);
-		assertTrue(page.size()==10);
+		assertTrue(page.getCount()==10);
 	}
 
 	@Test

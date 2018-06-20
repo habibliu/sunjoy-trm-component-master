@@ -62,7 +62,7 @@ public class VenueServiceImplTest extends AbstractUnitTestSupport{
 		Page<Venue> page=venueService.queryByPage(criteria);
 		
 		Assert.assertTrue(page != null);
-		assertTrue(page.size()==10);
+		assertTrue(page.getCount()==10);
 	}
 
 	@Test

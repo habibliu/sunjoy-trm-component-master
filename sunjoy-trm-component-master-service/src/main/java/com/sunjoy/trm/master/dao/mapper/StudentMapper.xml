@@ -5,11 +5,12 @@
 		select
 		id as id,
 		code as code,
-		Name as name,
+		name as name,
 		sex as sex,
 		height as height,
-		phone as phone,
 		school as school,
+		phone as phone,
+		birth_date as birthDate,
 		address as address,
 		image as image,
 		parent_name as parentName,
@@ -36,7 +37,7 @@
 				#{name,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="sex != null and sex != ''">
-				and sex = #{cardType,jdbcType=NUMBER}
+				and sex = #{sex,jdbcType=TINYINT}
 			</if>
 			
 		</where>

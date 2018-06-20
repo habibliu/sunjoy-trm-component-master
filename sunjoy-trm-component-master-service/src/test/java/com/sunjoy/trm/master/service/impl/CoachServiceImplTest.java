@@ -58,11 +58,12 @@ public class CoachServiceImplTest extends AbstractUnitTestSupport{
 			this.coachService.add(coach);
 		}
 		CoachCriteria criteria = new CoachCriteria();
+		criteria.setSex((short) 0);
 		criteria.setPageSize(10);
 		Page<Coach> page=coachService.queryByPage(criteria);
 		
 		Assert.assertTrue(page != null);
-		assertTrue(page.size()==10);
+		assertTrue(page.getCount()<10);
 	}
 
 	@Test

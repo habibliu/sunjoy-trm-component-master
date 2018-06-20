@@ -12,7 +12,7 @@
 
 	<modules>
 		<module>sunjoy-trm-component-master-service</module>
-		<module>sunjoy-trm-component-master-client</module>
+	
 	</modules>
 
 	<parent>
