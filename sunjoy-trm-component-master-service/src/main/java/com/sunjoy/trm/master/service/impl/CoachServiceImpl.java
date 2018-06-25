@@ -46,7 +46,7 @@ public class CoachServiceImpl implements ICoachService {
 	@Override
 	public Coach update(Coach coach) {
 		// step 1, 非空检查，加上UUID
-		BeanUtils.checkEmptyFields(coach, "id", "code", "name");
+		BeanUtils.checkEmptyFields(coach, "id","code", "name");
 		// step 2, 编号重复检验,如果编号被其他学员使用了，即抛异常
 		CoachCriteria criteria = new CoachCriteria();
 		criteria.setCode(coach.getCode());
@@ -65,7 +65,7 @@ public class CoachServiceImpl implements ICoachService {
 	@Override
 	public Coach add(Coach coach) {
 		// step 1, 非空检查
-		BeanUtils.checkEmptyFields(coach, "code", "name");
+		BeanUtils.checkEmptyFields(coach,  "code","name");
 		// step 2, 编号重复检验
 		CoachCriteria criteria = new CoachCriteria();
 		criteria.setCode(coach.getCode());
