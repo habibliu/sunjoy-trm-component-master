@@ -11,6 +11,7 @@ import com.sunjoy.common.exception.CommonException;
 import com.sunjoy.common.utils.BeanUtils;
 import com.sunjoy.common.utils.RandomUtils;
 import com.sunjoy.framework.dao.paging.Page;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.master.dao.CourseDao;
 import com.sunjoy.trm.master.dao.criteria.CourseCriteria;
 import com.sunjoy.trm.master.dao.entity.Course;
@@ -26,17 +27,15 @@ public class CourseServiceImpl implements ICourseService{
 	private CourseDao courseDao;
 
 	@Override
-	public Page<Course> queryByPage(CourseCriteria criteria) {
-		List<Course> courses = courseDao.queryCourseByPage(criteria);
+	public Page<Course> queryByPage(CourseCriteria criteria,PageInfo page) {
+		List<Course> courses = courseDao.queryCourseByPage(criteria,page);
 		long count = courseDao.getCourseTotalCount(criteria);
-		Page<Course> page = new Page<>();
-		page.setCount(count);
-		page.setPageSize(criteria.getPageSize());
-		page.setCurrentPage(criteria.getCurrentPage());
+		Page<Course> returnPage = new Page<>(page);
+		returnPage.setCount(count);
 		if (courses != null && !courses.isEmpty()) {
-			page.setRows(courses);
+			returnPage.setRows(courses);
 		}
-		return page;
+		return returnPage;
 	}
 
 	@Override

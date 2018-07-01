@@ -8,9 +8,6 @@ import com.sunjoy.trm.master.dao.entity.Student;
  */
 public class StudentCriteria extends Student {
 
-	private Integer pageSize = 10;
-
-	private Integer currentPage = 1;
 
 	private String agePhase;// 年龄阶段，格式：ageStart-ageEnd,如13-19
 
@@ -22,19 +19,4 @@ public class StudentCriteria extends Student {
 		this.agePhase = agePhase;
 	}
 
-	public Integer getPageSize() {
-		return pageSize;
-	}
-
-	public Integer getCurrentPage() {
-		return currentPage ;
-	}
-
-	public void setPageSize(Integer pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	public void setCurrentPage(Integer currentPage) {
-		this.currentPage = currentPage;
-	}
 }

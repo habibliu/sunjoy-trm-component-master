@@ -1,11 +1,14 @@
 package com.sunjoy.trm.master.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.sunjoy.common.utils.BeanUtils;
 import com.sunjoy.framework.dao.BaseDao;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.master.dao.criteria.CourseCriteria;
 import com.sunjoy.trm.master.dao.entity.Course;
 import com.sunjoy.trm.master.dao.mapper.CourseMapper;
@@ -31,9 +34,11 @@ public class CourseDao extends BaseDao<CourseMapper,Course>{
 	 * @param criteria 过虑条件
 	 * @return
 	 */
-	public List<Course> queryCourseByPage(CourseCriteria criteria) {
-		BeanUtils.checkEmptyFields(criteria,"currentPage","pageSize");
-		return this.getMapper().queryCourseByPage(criteria);
+	public List<Course> queryCourseByPage(CourseCriteria criteria,PageInfo page) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("criteria", criteria);
+		params.put("page", page);
+		return this.getMapper().queryCourseByPage(params);
 
 	}
 

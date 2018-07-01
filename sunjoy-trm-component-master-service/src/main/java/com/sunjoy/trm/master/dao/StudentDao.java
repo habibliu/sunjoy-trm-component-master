@@ -1,11 +1,14 @@
 package com.sunjoy.trm.master.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.sunjoy.common.utils.BeanUtils;
 import com.sunjoy.framework.dao.BaseDao;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.master.dao.criteria.StudentCriteria;
 import com.sunjoy.trm.master.dao.entity.Student;
 import com.sunjoy.trm.master.dao.mapper.StudentMapper;
@@ -29,9 +32,11 @@ public class StudentDao extends BaseDao<StudentMapper, Student> {
 	 * @param criteria 过虑条件
 	 * @return
 	 */
-	public List<Student> queryStudentByPage(StudentCriteria criteria) {
-		BeanUtils.checkEmptyFields(criteria,"currentPage","pageSize");
-		return this.getMapper().queryStudentByPage(criteria);
+	public List<Student> queryStudentByPage(StudentCriteria criteria,PageInfo page) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("criteria", criteria);
+		params.put("page", page);
+		return this.getMapper().queryStudentByPage(params);
 
 	}
 

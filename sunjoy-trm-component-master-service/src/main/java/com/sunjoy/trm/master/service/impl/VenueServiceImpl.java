@@ -10,6 +10,7 @@ import com.sunjoy.common.exception.CommonException;
 import com.sunjoy.common.utils.BeanUtils;
 import com.sunjoy.common.utils.RandomUtils;
 import com.sunjoy.framework.dao.paging.Page;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.master.dao.VenueDao;
 import com.sunjoy.trm.master.dao.criteria.VenueCriteria;
 import com.sunjoy.trm.master.dao.entity.Venue;
@@ -25,17 +26,15 @@ public class VenueServiceImpl implements IVenueService {
 	private VenueDao venueDao;
 
 	@Override
-	public Page<Venue> queryByPage(VenueCriteria criteria) {
-		List<Venue> venues = venueDao.queryVenueByPage(criteria);
+	public Page<Venue> queryByPage(VenueCriteria criteria,PageInfo page) {
+		List<Venue> venues = venueDao.queryVenueByPage(criteria,page);
 		long count = venueDao.getVenueTotalCount(criteria);
-		Page<Venue> page = new Page<>();
-		page.setCount(count);
-		page.setPageSize(criteria.getPageSize());
-		page.setCurrentPage(criteria.getCurrentPage());
+		Page<Venue> returnPage = new Page<>(page);
+		returnPage.setCount(count);
 		if (venues != null && !venues.isEmpty()) {
-			page.setRows(venues);
+			returnPage.setRows(venues);
 		}
-		return page;
+		return returnPage;
 	}
 
 	@Override

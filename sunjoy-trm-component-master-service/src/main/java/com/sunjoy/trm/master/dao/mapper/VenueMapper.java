@@ -1,6 +1,7 @@
 package com.sunjoy.trm.master.dao.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.sunjoy.trm.master.dao.criteria.VenueCriteria;
 import com.sunjoy.trm.master.dao.entity.Venue;
@@ -11,7 +12,7 @@ public interface VenueMapper {
 	 * @param criteria 查询条件
 	 * @return
 	 */
-	List<Venue> queryVenueByPage(VenueCriteria criteria);
+	List<Venue> queryVenueByPage(Map<String,Object> params);
 	/**
 	 * 总记录数接口
 	 * @param criteria 查询条件

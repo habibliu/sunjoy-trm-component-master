@@ -10,6 +10,7 @@ import com.sunjoy.common.exception.CommonException;
 import com.sunjoy.common.utils.BeanUtils;
 import com.sunjoy.common.utils.RandomUtils;
 import com.sunjoy.framework.dao.paging.Page;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.master.dao.CoachDao;
 import com.sunjoy.trm.master.dao.criteria.CoachCriteria;
 import com.sunjoy.trm.master.dao.entity.Coach;
@@ -25,17 +26,15 @@ public class CoachServiceImpl implements ICoachService {
 	private CoachDao coachDao;
 
 	@Override
-	public Page<Coach> queryByPage(CoachCriteria criteria) {
-		List<Coach> coachs = coachDao.queryCoachByPage(criteria);
+	public Page<Coach> queryByPage(CoachCriteria criteria,PageInfo page) {
+		List<Coach> coachs = coachDao.queryCoachByPage(criteria,page);
 		long count = coachDao.getCoachTotalCount(criteria);
-		Page<Coach> page = new Page<>();
-		page.setCount(count);
-		page.setPageSize(criteria.getPageSize());
-		page.setCurrentPage(criteria.getCurrentPage());
+		Page<Coach> returnPage = new Page<>(page);
+		returnPage.setCount(count);
 		if (coachs != null && !coachs.isEmpty()) {
-			page.setRows(coachs);
+			returnPage.setRows(coachs);
 		}
-		return page;
+		return returnPage;
 	}
 
 	@Override

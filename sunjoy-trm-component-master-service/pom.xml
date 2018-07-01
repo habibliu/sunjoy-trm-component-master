@@ -79,9 +79,7 @@
 				<directory>src/main/resources</directory>
 				<excludes>
 					<exclude>env/dev/*</exclude>
-					<exclude>env/test/*</exclude>
-					<exclude>env/uat/*</exclude>
-					<exclude>env/prod/*</exclude>
+					<exclude>env/notebook/*</exclude>
 				</excludes>
 				<includes>
 					<include>messages/*</include>
@@ -100,28 +98,18 @@
 			<properties>
 				<profiles.active>dev</profiles.active>
 			</properties>
+		
+		</profile>
+
+		<profile>
+			<id>notebook</id>
+			<properties>
+				<profiles.active>notebook</profiles.active>
+			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 		</profile>
-
-		<profile>
-			<id>test</id>
-			<properties>
-				<profiles.active>test</profiles.active>
-			</properties>
-		</profile>
-		<profile>
-			<id>uat</id>
-			<properties>
-				<profiles.active>uat</profiles.active>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<profiles.active>prod</profiles.active>
-			</properties>
-		</profile>
+		
 	</profiles>
 </project>

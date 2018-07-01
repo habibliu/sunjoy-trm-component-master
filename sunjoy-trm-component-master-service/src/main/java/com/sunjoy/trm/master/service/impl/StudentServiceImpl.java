@@ -10,6 +10,7 @@ import com.sunjoy.common.exception.CommonException;
 import com.sunjoy.common.utils.BeanUtils;
 import com.sunjoy.common.utils.RandomUtils;
 import com.sunjoy.framework.dao.paging.Page;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.master.dao.StudentDao;
 import com.sunjoy.trm.master.dao.criteria.StudentCriteria;
 import com.sunjoy.trm.master.dao.entity.Student;
@@ -24,17 +25,15 @@ public class StudentServiceImpl implements IStudentService {
 	private StudentDao studentDao;
 
 	@Override
-	public Page<Student> queryByPage(StudentCriteria criteria) {
-		List<Student> students = studentDao.queryStudentByPage(criteria);
+	public Page<Student> queryByPage(StudentCriteria criteria,PageInfo page) {
+		List<Student> students = studentDao.queryStudentByPage(criteria,page);
 		long count = studentDao.getStudentTotalCount(criteria);
-		Page<Student> page = new Page<>();
-		page.setCount(count);
-		page.setPageSize(criteria.getPageSize());
-		page.setCurrentPage(criteria.getCurrentPage());
+		Page<Student> returnPage = new Page<>(page);
+		returnPage.setCount(count);
 		if (students != null && !students.isEmpty()) {
-			page.setRows(students);
+			returnPage.setRows(students);
 		}
-		return page;
+		return returnPage;
 	}
 
 	@Override

@@ -11,7 +11,7 @@ public interface IStudentService {
 	/**
 	 * 分页查询
 	 */
-	public Page<Student> queryByPage(StudentCriteria criteria);
+	public Page<Student> queryByPage(StudentCriteria criteria,PageInfo page);
 
 	/**
 	 * 不分页查询

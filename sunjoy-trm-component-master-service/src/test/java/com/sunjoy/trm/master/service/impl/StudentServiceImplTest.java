@@ -17,6 +17,7 @@ import com.github.jsonzou.jmockdata.MockConfig;
 import com.sunjoy.common.exception.CommonException;
 import com.sunjoy.common.utils.RandomUtils;
 import com.sunjoy.framework.dao.paging.Page;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.config.AbstractUnitTestSupport;
 import com.sunjoy.trm.master.dao.criteria.StudentCriteria;
 import com.sunjoy.trm.master.dao.entity.Student;
@@ -58,8 +59,7 @@ public class StudentServiceImplTest extends AbstractUnitTestSupport{
 			this.studentService.add(student);
 		}
 		StudentCriteria criteria = new StudentCriteria();
-		criteria.setPageSize(10);
-		Page<Student> page=studentService.queryByPage(criteria);
+		Page<Student> page=studentService.queryByPage(criteria,new PageInfo());
 		
 		Assert.assertTrue(page != null);
 		assertTrue(page.getCount()==10);
@@ -75,8 +75,6 @@ public class StudentServiceImplTest extends AbstractUnitTestSupport{
 		}
 		StudentCriteria criteria = new StudentCriteria();
 		criteria.setCode(this.students.get(0).getCode().substring(0, 1));
-		criteria.setCurrentPage(null);
-		criteria.setPageSize(null);
 		List<Student> queryStudents=studentService.query(criteria);
 		assertTrue(queryStudents.size()>10);
 	}

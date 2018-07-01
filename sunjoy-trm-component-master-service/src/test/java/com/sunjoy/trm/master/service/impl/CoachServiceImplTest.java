@@ -17,6 +17,7 @@ import com.github.jsonzou.jmockdata.MockConfig;
 import com.sunjoy.common.exception.CommonException;
 import com.sunjoy.common.utils.RandomUtils;
 import com.sunjoy.framework.dao.paging.Page;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.config.AbstractUnitTestSupport;
 import com.sunjoy.trm.master.dao.criteria.CoachCriteria;
 import com.sunjoy.trm.master.dao.entity.Coach;
@@ -58,9 +59,7 @@ public class CoachServiceImplTest extends AbstractUnitTestSupport{
 			this.coachService.add(coach);
 		}
 		CoachCriteria criteria = new CoachCriteria();
-		criteria.setSex((short) 0);
-		criteria.setPageSize(10);
-		Page<Coach> page=coachService.queryByPage(criteria);
+		Page<Coach> page=coachService.queryByPage(criteria,new PageInfo());
 		
 		Assert.assertTrue(page != null);
 		assertTrue(page.getCount()<10);
@@ -76,8 +75,6 @@ public class CoachServiceImplTest extends AbstractUnitTestSupport{
 		}
 		CoachCriteria criteria = new CoachCriteria();
 		criteria.setCode(this.coachs.get(0).getCode().substring(0, 1));
-		criteria.setCurrentPage(null);
-		criteria.setPageSize(null);
 		List<Coach> queryCoachs=coachService.query(criteria);
 		assertTrue(queryCoachs.size()>10);
 	}

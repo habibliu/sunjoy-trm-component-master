@@ -1,11 +1,14 @@
 package com.sunjoy.trm.master.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.sunjoy.common.utils.BeanUtils;
 import com.sunjoy.framework.dao.BaseDao;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.master.dao.criteria.VenueCriteria;
 import com.sunjoy.trm.master.dao.entity.Venue;
 import com.sunjoy.trm.master.dao.mapper.VenueMapper;
@@ -30,9 +33,11 @@ public class VenueDao extends BaseDao<VenueMapper,Venue>{
 	 * @param criteria 过虑条件
 	 * @return
 	 */
-	public List<Venue> queryVenueByPage(VenueCriteria criteria) {
-		BeanUtils.checkEmptyFields(criteria,"currentPage","pageSize");
-		return this.getMapper().queryVenueByPage(criteria);
+	public List<Venue> queryVenueByPage(VenueCriteria criteria,PageInfo page) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("criteria", criteria);
+		params.put("page", page);
+		return this.getMapper().queryVenueByPage(params);
 
 	}
 

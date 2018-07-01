@@ -3,6 +3,7 @@ package com.sunjoy.trm.master.service;
 import java.util.List;
 
 import com.sunjoy.framework.dao.paging.Page;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.master.dao.criteria.VenueCriteria;
 import com.sunjoy.trm.master.dao.entity.Venue;
 
@@ -10,7 +11,7 @@ public interface IVenueService {
 	/**
 	 * 分页查询
 	 */
-	public Page<Venue> queryByPage(VenueCriteria criteria);
+	public Page<Venue> queryByPage(VenueCriteria criteria,PageInfo page);
 	
 	/**
 	 * 不分页查询

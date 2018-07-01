@@ -3,6 +3,7 @@ package com.sunjoy.trm.master.service;
 import java.util.List;
 
 import com.sunjoy.framework.dao.paging.Page;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.master.dao.criteria.CourseCriteria;
 import com.sunjoy.trm.master.dao.entity.Course;
 
@@ -10,7 +11,7 @@ public interface ICourseService {
 	/**
 	 * 分页查询
 	 */
-	public Page<Course> queryByPage(CourseCriteria criteria);
+	public Page<Course> queryByPage(CourseCriteria criteria,PageInfo page);
 	
 	/**
 	 * 不分页查询

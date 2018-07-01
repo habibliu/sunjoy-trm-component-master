@@ -1,11 +1,14 @@
 package com.sunjoy.trm.master.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.sunjoy.common.utils.BeanUtils;
 import com.sunjoy.framework.dao.BaseDao;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.master.dao.criteria.CoachCriteria;
 import com.sunjoy.trm.master.dao.entity.Coach;
 import com.sunjoy.trm.master.dao.mapper.CoachMapper;
@@ -35,9 +38,11 @@ public class CoachDao extends BaseDao<CoachMapper,Coach> {
 	 * @param criteria 过虑条件
 	 * @return
 	 */
-	public List<Coach> queryCoachByPage(CoachCriteria criteria) {
-		BeanUtils.checkEmptyFields(criteria,"currentPage","pageSize");
-		return this.getMapper().queryCoachByPage(criteria);
+	public List<Coach> queryCoachByPage(CoachCriteria criteria,PageInfo page) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("criteria", criteria);
+		params.put("page", page);
+		return this.getMapper().queryCoachByPage(params);
 
 	}
 

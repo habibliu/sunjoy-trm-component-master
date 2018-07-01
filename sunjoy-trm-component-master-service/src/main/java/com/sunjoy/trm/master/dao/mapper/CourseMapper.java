@@ -1,6 +1,7 @@
 package com.sunjoy.trm.master.dao.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.sunjoy.trm.master.dao.criteria.CourseCriteria;
 import com.sunjoy.trm.master.dao.entity.Course;
@@ -11,7 +12,7 @@ public interface CourseMapper {
 	 * @param criteria 查询条件
 	 * @return
 	 */
-	List<Course> queryCourseByPage(CourseCriteria criteria);
+	List<Course> queryCourseByPage(Map<String,Object> params);
 	/**
 	 * 总记录数接口
 	 * @param criteria 查询条件

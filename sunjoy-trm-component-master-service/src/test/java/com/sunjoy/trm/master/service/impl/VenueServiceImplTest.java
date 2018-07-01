@@ -17,6 +17,7 @@ import com.github.jsonzou.jmockdata.MockConfig;
 import com.sunjoy.common.exception.CommonException;
 import com.sunjoy.common.utils.RandomUtils;
 import com.sunjoy.framework.dao.paging.Page;
+import com.sunjoy.framework.dao.paging.PageInfo;
 import com.sunjoy.trm.config.AbstractUnitTestSupport;
 import com.sunjoy.trm.master.dao.criteria.VenueCriteria;
 import com.sunjoy.trm.master.dao.entity.Venue;
@@ -58,8 +59,7 @@ public class VenueServiceImplTest extends AbstractUnitTestSupport{
 			this.venueService.add(venue);
 		}
 		VenueCriteria criteria = new VenueCriteria();
-		criteria.setPageSize(10);
-		Page<Venue> page=venueService.queryByPage(criteria);
+		Page<Venue> page=venueService.queryByPage(criteria,new PageInfo());
 		
 		Assert.assertTrue(page != null);
 		assertTrue(page.getCount()==10);
@@ -75,8 +75,6 @@ public class VenueServiceImplTest extends AbstractUnitTestSupport{
 		}
 		VenueCriteria criteria = new VenueCriteria();
 		criteria.setName(this.venues.get(0).getName().substring(0, 1));
-		criteria.setCurrentPage(null);
-		criteria.setPageSize(null);
 		List<Venue> queryVenues=venueService.query(criteria);
 		assertTrue(queryVenues.size()>10);
 	}
