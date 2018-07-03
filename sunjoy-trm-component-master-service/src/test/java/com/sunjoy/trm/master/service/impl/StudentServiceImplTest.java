@@ -61,8 +61,7 @@ public class StudentServiceImplTest extends AbstractUnitTestSupport{
 		StudentCriteria criteria = new StudentCriteria();
 		Page<Student> page=studentService.queryByPage(criteria,new PageInfo());
 		
-		Assert.assertTrue(page != null);
-		assertTrue(page.getCount()==10);
+		Assert.assertTrue(page != null && page.getCount()>1);
 	}
 
 	@Test

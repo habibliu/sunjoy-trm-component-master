@@ -98,7 +98,9 @@
 			<properties>
 				<profiles.active>dev</profiles.active>
 			</properties>
-		
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 		</profile>
 
 		<profile>
@@ -106,9 +108,7 @@
 			<properties>
 				<profiles.active>notebook</profiles.active>
 			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
+			
 		</profile>
 		
 	</profiles>

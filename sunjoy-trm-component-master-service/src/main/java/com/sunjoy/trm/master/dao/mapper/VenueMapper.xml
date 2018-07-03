@@ -25,12 +25,10 @@
 				and phone =#{phone,jdbcType=VARCHAR}
 			</if>
 			<if test="name != null and name != ''">
-				and name like '%' ||
-				#{name,jdbcType=VARCHAR} || '%'
+				and name #{name,jdbcType=VARCHAR} 
 			</if>
 			<if test="principal != null and principal != ''">
-				and principal like '%' ||
-				#{name,jdbcType=VARCHAR} || '%'
+				and principal like #{name,jdbcType=VARCHAR} 
 			</if>
 			
 		</where>

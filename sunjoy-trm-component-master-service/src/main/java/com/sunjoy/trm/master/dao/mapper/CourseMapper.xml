@@ -23,8 +23,7 @@
 				and id = #{id,jdbcType=VARCHAR}
 			</if>
 			<if test="name != null and name != ''">
-				and name like '%' ||
-				#{name,jdbcType=VARCHAR} || '%'
+				and name like #{name,jdbcType=VARCHAR}
 			</if>
 			<if test="level != null and level != ''">
 				and level = #{code,jdbcType=NUMBER} 

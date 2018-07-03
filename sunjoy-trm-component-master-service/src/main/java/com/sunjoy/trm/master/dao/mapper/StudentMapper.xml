@@ -29,12 +29,10 @@
 				and id = #{id,jdbcType=VARCHAR}
 			</if>
 			<if test="code != null and code != ''">
-				and code like '%' ||
-				#{code,jdbcType=VARCHAR} || '%'
+				and code like #{code,jdbcType=VARCHAR}
 			</if>
 			<if test="name != null and name != ''">
-				and name like '%' ||
-				#{name,jdbcType=VARCHAR} || '%'
+				and name like #{name,jdbcType=VARCHAR}
 			</if>
 			<if test="sex != null and sex != ''">
 				and sex = #{sex,jdbcType=TINYINT}
