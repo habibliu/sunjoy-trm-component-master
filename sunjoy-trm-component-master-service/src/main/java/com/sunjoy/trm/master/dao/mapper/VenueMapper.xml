@@ -22,13 +22,13 @@
 				and id = #{id,jdbcType=VARCHAR}
 			</if>
 			<if test="phone != null and phone!='' ">
-				and phone =#{phone,jdbcType=VARCHAR}
+				and phone like concat(concat('%',#{phone,jdbcType=VARCHAR}),'%')
 			</if>
 			<if test="name != null and name != ''">
-				and name #{name,jdbcType=VARCHAR} 
+				and name like concat(concat('%',#{name,jdbcType=VARCHAR} ),'%')
 			</if>
 			<if test="principal != null and principal != ''">
-				and principal like #{name,jdbcType=VARCHAR} 
+				and principal like concat(concat('%',#{principal,jdbcType=VARCHAR} ),'%')
 			</if>
 			
 		</where>
