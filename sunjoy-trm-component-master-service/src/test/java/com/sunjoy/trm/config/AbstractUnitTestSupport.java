@@ -12,15 +12,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 
-import com.sunjoy.common.exception.CommonException;
 import com.sunjoy.framework.client.core.ClientConfig;
+import com.sunjoy.framework.exception.CommonException;
 
 /**
  * 测试单元的统一配置
  * 
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = { ClientConfig.class })
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringBootTest(classes = { ClientConfig.class })
 public abstract class AbstractUnitTestSupport {
 
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());

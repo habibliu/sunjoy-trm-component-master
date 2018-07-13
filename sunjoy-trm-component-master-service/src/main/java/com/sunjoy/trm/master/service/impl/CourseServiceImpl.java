@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sunjoy.common.exception.CommonException;
-import com.sunjoy.common.utils.BeanUtils;
-import com.sunjoy.common.utils.RandomUtils;
 import com.sunjoy.framework.dao.paging.Page;
 import com.sunjoy.framework.dao.paging.PageInfo;
+import com.sunjoy.framework.exception.CommonException;
+import com.sunjoy.framework.utils.BeanUtils;
+import com.sunjoy.framework.utils.RandomUtils;
 import com.sunjoy.trm.master.dao.CourseDao;
 import com.sunjoy.trm.master.dao.criteria.CourseCriteria;
 import com.sunjoy.trm.master.dao.entity.Course;

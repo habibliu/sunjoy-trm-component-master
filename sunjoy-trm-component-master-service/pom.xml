@@ -17,18 +17,10 @@
 	<dependencies>
 
 		<!-- sunjoy framework dependencies -->
-		<dependency>
-			<groupId>com.sunjoy.framework</groupId>
-			<artifactId>sunjoy-framework-client</artifactId>
-		</dependency>
+		
 		<dependency>
 			<groupId>com.sunjoy.framework</groupId>
 			<artifactId>sunjoy-framework-service</artifactId>
-		</dependency>
-		<!-- sunjoy common dependencies -->
-		<dependency>
-			<groupId>com.sunjoy.common</groupId>
-			<artifactId>sunjoy-common-base</artifactId>
 		</dependency>
 
 		<dependency>
@@ -70,6 +62,7 @@
 				</executions>
 				<configuration>
 					<executable>true</executable>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>

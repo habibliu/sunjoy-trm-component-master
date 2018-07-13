@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.github.jsonzou.jmockdata.JMockData;
 import com.github.jsonzou.jmockdata.MockConfig;
-import com.sunjoy.common.exception.CommonException;
-import com.sunjoy.common.utils.RandomUtils;
 import com.sunjoy.framework.dao.paging.Page;
 import com.sunjoy.framework.dao.paging.PageInfo;
+import com.sunjoy.framework.exception.CommonException;
+import com.sunjoy.framework.utils.RandomUtils;
 import com.sunjoy.trm.config.AbstractUnitTestSupport;
 import com.sunjoy.trm.master.dao.criteria.StudentCriteria;
 import com.sunjoy.trm.master.dao.entity.Student;

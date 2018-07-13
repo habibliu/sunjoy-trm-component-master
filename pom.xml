@@ -12,7 +12,7 @@
 
 	<modules>
 		<module>sunjoy-trm-component-master-service</module>
-	
+
 	</modules>
 
 	<parent>
@@ -34,21 +34,11 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- sunjoy framework dependencies -->
-			<dependency>
-				<groupId>com.sunjoy.framework</groupId>
-				<artifactId>sunjoy-framework-client</artifactId>
-				<version>${sunjoy.framework.version}</version>
-			</dependency>
+
 			<dependency>
 				<groupId>com.sunjoy.framework</groupId>
 				<artifactId>sunjoy-framework-service</artifactId>
 				<version>${sunjoy.framework.version}</version>
-			</dependency>
-			<!-- sunjoy common dependencies -->
-			<dependency>
-				<groupId>com.sunjoy.common</groupId>
-				<artifactId>sunjoy-common-base</artifactId>
-				<version>${sunjoy.common.version}</version>
 			</dependency>
 
 			<dependency>
@@ -84,17 +74,15 @@
 		</repository>
 	</repositories>
 
-<!-- 
 	<distributionManagement>
 		<repository>
-			<id>nexus-releases</id>
-			<url>http://192.168.0.237:8081/nexus/content/repositories/releases</url>
+			<id>Releases</id>
+			<url>http://localhost:8081/nexus/content/repositories/releases</url>
 		</repository>
 
 		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<url>http://192.168.0.237:8081/nexus/content/repositories/snapshots</url>
+			<id>Snapshots</id>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-	 -->
 </project>

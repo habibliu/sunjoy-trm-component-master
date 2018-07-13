@@ -2,8 +2,8 @@ package com.sunjoy.trm.master.dao.entity;
 
 import java.util.Date;
 
-import com.sunjoy.common.utils.JsonUtil;
 import com.sunjoy.framework.dao.BaseEntity;
+import com.sunjoy.framework.utils.JsonUtil;
 /**
  * Student Entity Class
  *
